@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: makeit
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: neos
+Implementation-Vendor-Id: ro.patrut
+Build-Jdk: 1.8.0_101
+Implementation-URL: http://projects.spring.io/spring-boot/makeit/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
