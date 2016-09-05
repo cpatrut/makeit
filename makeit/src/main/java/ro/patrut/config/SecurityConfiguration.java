@@ -16,25 +16,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	@Qualifier("customUserDetailsService")
 	UserDetailsService userDetailsService;
-	
+
+	//configure authentication
 	@Autowired
-	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception{
+	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService);
 	}
-	
-//	@Autowired
-//	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication().withUser("bill").password("abc123").roles("USER");
-//		auth.inMemoryAuthentication().withUser("admin").password("root123").roles("ADMIN");
-//		auth.inMemoryAuthentication().withUser("dba").password("root123").roles("ADMIN", "DBA");
-//	}
 
+	//configure authorization
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/", "/home").permitAll().antMatchers("/admin/**")
-				.access("hasRole('ADMIN')").antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')").and()
-				.formLogin().loginPage("/login").usernameParameter("ssoId").passwordParameter("password").and().csrf()
-				.and().exceptionHandling().accessDeniedPage("/access-denied");
+		http.authorizeRequests().antMatchers("/", "/home")
+				.permitAll().antMatchers("/admin/**").access("hasRole('ADMIN')").antMatchers("/db/**")
+				.access("hasRole('ADMIN') and hasRole('DBA')").and().formLogin().loginPage("/login")
+				.usernameParameter("ssoId").passwordParameter("password").and().csrf().and().exceptionHandling()
+				.accessDeniedPage("/access-denied");
+		
+		//and().logout().logoutSuccessHandler(logoutsuccesshandler).invalidateHttpSession(true).addLogoutHandler(logoutHandler).deleteCookies(cookieNamesToClear)
+		
+		
 	}
+	
 
 }

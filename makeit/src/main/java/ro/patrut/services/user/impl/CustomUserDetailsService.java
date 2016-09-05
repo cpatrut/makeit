@@ -5,15 +5,14 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import ro.patrut.models.user.User;
-import ro.patrut.models.user.UserProfile;
+import ro.patrut.models.user.UserModel;
+import ro.patrut.models.user.UserProfileModel;
 import ro.patrut.services.user.UserService;
 
 public class CustomUserDetailsService implements UserDetailsService {
@@ -24,7 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String ssoId) throws UsernameNotFoundException {
-		User user = userService.findBySso(ssoId);
+		UserModel user = userService.findBySso(ssoId);
 		if (user == null) {
 			LOG.warn("User not found");
 			throw new UsernameNotFoundException("Username not found");
@@ -34,10 +33,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 				user.getState().equals("Active"), true, true, true, getGrantedAuthorities(user));
 	}
 
-	private List<GrantedAuthority> getGrantedAuthorities(User user) {
+	private List<GrantedAuthority> getGrantedAuthorities(UserModel user) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-		for (UserProfile userProfile : user.getUserProfiles()) {
+		for (UserProfileModel userProfile : user.getUserProfiles()) {
 			LOG.debug("User profile:" + userProfile);
 			authorities.add(new SimpleGrantedAuthority("ROLE_" + userProfile.getType()));
 

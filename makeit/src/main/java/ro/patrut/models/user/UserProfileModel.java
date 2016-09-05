@@ -11,7 +11,7 @@ import ro.patrut.models.user.helper.UserProfileType;
 
 @Entity
 @Table(name = "USER_PROFILE")
-public class UserProfile {
+public class UserProfileModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,7 +57,7 @@ public class UserProfile {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserProfile other = (UserProfile) obj;
+		UserProfileModel other = (UserProfileModel) obj;
 		if (id != other.id)
 			return false;
 		return true;

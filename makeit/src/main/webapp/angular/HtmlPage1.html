@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/MyController.js"></script>
+
+
+</head>
+<body ng-app="apiModule">
+    <div  ng-controller="myController">
+        {{message}}
+        <br/>
+        First Name: {{employee.firstName}}
+        <br/>Last Name: {{employee.lastName}}
+        <br/>Gender : {{employee.gender}}
+    <br/>
+        <img src="img/images.jpeg" />
+    <br/>
+        Country name:{{country.name}}><br/>
+        Country Capital:{{country.capital}}
+        <br/>
+
+        <img ng-src="{{country.flag}}" alt="{{country.name + 'Flag'}} " />
+
+       <input type="text"  ng-model="message"/>
+        <table>
+            <tr>
+                <td>
+                    First Name:
+                </td>
+                <td>
+                    <input type="text" ng-model="employee.firstName">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last Name:
+                </td>
+                <td>
+                    <input type="text" ng-model="employee.lastName">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gender:
+                </td>
+                <td>
+                    <input type="text" ng-model="employee.gender">
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>
+                    First Name:
+                </td>
+                <td>
+                    {{employee.firstName}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last Name:
+                </td>
+                <td>
+              {{employee.lastName}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gender:
+                </td>
+                <td>
+                    {{employee.gender}}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

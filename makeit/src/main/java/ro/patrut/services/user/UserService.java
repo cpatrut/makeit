@@ -1,9 +1,9 @@
 package ro.patrut.services.user;
 
-import ro.patrut.models.user.User;
+import ro.patrut.models.user.UserModel;
 
 public interface UserService {
-	User findById(int id);
+	UserModel findById(int id);
 
-	User findBySso(String sso);
+	UserModel findBySso(String sso);
 }

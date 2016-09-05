@@ -18,7 +18,7 @@ import ro.patrut.models.user.helper.State;
 
 @Entity
 @Table(name = "APP_USER")
-public class User {
+public class UserModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +45,7 @@ public class User {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "APP_USER_USER_PROFILE", joinColumns = { @JoinColumn(name = "USER_ID") }, inverseJoinColumns = {
 			@JoinColumn(name = "USER_PROFILE_ID") })
-	private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+	private Set<UserProfileModel> userProfiles = new HashSet<UserProfileModel>();
 
 	@Override
 	public String toString() {
@@ -110,11 +110,11 @@ public class User {
 		this.state = state;
 	}
 
-	public Set<UserProfile> getUserProfiles() {
+	public Set<UserProfileModel> getUserProfiles() {
 		return userProfiles;
 	}
 
-	public void setUserProfiles(Set<UserProfile> userProfiles) {
+	public void setUserProfiles(Set<UserProfileModel> userProfiles) {
 		this.userProfiles = userProfiles;
 	}
 
@@ -135,7 +135,7 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		UserModel other = (UserModel) obj;
 		if (id != other.id)
 			return false;
 		if (ssoId == null) {

@@ -1,10 +1,10 @@
 package ro.patrut.services.dao.user;
 
-import ro.patrut.models.user.User;
+import ro.patrut.models.user.UserModel;
 
 public interface UserDao {
-	User findById(int id);
+	UserModel findById(int id);
 
-	User findBySSo(String sso);
+	UserModel findBySSo(String sso);
 
 }

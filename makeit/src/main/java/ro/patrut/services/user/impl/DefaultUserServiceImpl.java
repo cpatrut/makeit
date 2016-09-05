@@ -3,7 +3,7 @@ package ro.patrut.services.user.impl;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.transaction.annotation.Transactional;
 
-import ro.patrut.models.user.User;
+import ro.patrut.models.user.UserModel;
 import ro.patrut.services.dao.user.UserDao;
 import ro.patrut.services.user.UserService;
 
@@ -13,11 +13,11 @@ public class DefaultUserServiceImpl implements UserService{
 	UserDao userDao;
 
 	@Override
-	public User findById(int id) {
+	public UserModel findById(int id) {
 		return userDao.findById(id);
 	}
 	@Override
-	public User findBySso(String sso) {
+	public UserModel findBySso(String sso) {
 		return userDao.findBySSo(sso);
 	}
 
